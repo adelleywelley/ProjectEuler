@@ -8,18 +8,17 @@ namespace ProjectEuler
     public class PE_Test
     {
         [TestMethod]
-        public void RemovedSumFromInitialAmount()
+        public void Task1()
         {
-            int value = 10;
-            int divisor = 3;
-            int result = 18;
+            int value = 1000;
+            int result = 233168;
 
-            PE_Task1 T1 = new PE_Task1(value, divisor);
+            PE_Task1 T1 = new PE_Task1(value, 3, 5);
             T1.GenerateSumOfMultiples();
 
             // assert
             double actual = T1.SumOfMultiples;
-            Assert.AreEqual(result, actual, "Incorrect number of multiples!");
+            Assert.AreEqual(result, actual, "Incorrect sum of multiples!");
         }
     }
 }

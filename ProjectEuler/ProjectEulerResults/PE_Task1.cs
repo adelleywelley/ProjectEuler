@@ -13,29 +13,36 @@ namespace ProjectEulerResults
     public class PE_Task1
     {
         private int p_MaxValue;
-        private int p_Divisor;
+        private int[] p_DivisorValues;
         private int p_SumOfMultiples;
 
         public static void Main()
         {
-            //PE_Task1 T1 = new PE_Task1(10, 3);
-            //T1.GetSumOfMultiples();
-            //Console.WriteLine(T1.MultipleSum);
+            //int[] numbers = new int[] { 3, 5 };
+            //PE_Task1 T1 = new PE_Task1(1000, numbers);
+            //T1.GenerateSumOfMultiples();
+            //Console.WriteLine(T1.SumOfMultiples);
         }
 
-        public PE_Task1(int maxValue, int divisor)
+        public PE_Task1(int maxValue, params int[] divisors)
         {
             p_MaxValue = maxValue;
-            p_Divisor = divisor;
+            p_DivisorValues = divisors;
         }
         
         public void GenerateSumOfMultiples()
         {
-            for (int i = 0; i <= p_MaxValue; i++)
+            for (int i = 0; i < p_MaxValue; i++)
             {
-                if (i % p_Divisor == 0)
+                for (int j = 0; j < p_DivisorValues.Length; j++)
                 {
-                    p_SumOfMultiples += i;
+                    if (i % p_DivisorValues[j] == 0)
+                    {
+                        p_SumOfMultiples += i;
+                        /*If it finds one, BREAK OUT, otherwise it may add it to the total multiple
+                        times e.g. 15 is a multiple of 3 and 5 - hence incorrect answer!!*/
+                        break;
+                    }
                 }
             }
         }
@@ -44,30 +51,5 @@ namespace ProjectEulerResults
         {
             get { return p_SumOfMultiples; }
         }
-
-
-        //private int p_MaxValue;
-        //private double p_Multiples;
-
-        //public PE_Task1(int maxValue)
-        //{
-        //    p_MaxValue = maxValue;
-        //}
-
-        //public double Multiples
-        //{
-        //    get { return p_Multiples; }
-        //}
-
-        //public void GetMultiplesOf(int multiple)
-        //{
-        //    p_Multiples = p_MaxValue / multiple;
-        //}
-
-        //public static void Main()
-        //{
-        //    //PE_Task1 T1 = new PE_Task1(1000);
-        //    //T1.GetMultiplesOf(5);
-        //}
     }
 }
